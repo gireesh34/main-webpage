@@ -1,42 +1,53 @@
-@import url("https://fonts.cdnfonts.com/css/general-sans");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-sora: "Sora", sans-serif;
+  --font-code: "Source Code Pro", monospace;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  scroll-behavior: smooth
+}
+.font-sora {
+  font-family: 'Sora', sans-serif;
+}
+
+code, pre {
+  font-family: var(--font-code);
+}
+
 body {
-  width: 100dvw;
+  font-family: var(--font-grotesk);
+  width: 100vw;
   overflow-x: hidden;
-  background-color: #dfdff0;
-  font-family: "General Sans", sans-serif;
+  background: radial-gradient(100px at var(--cursor-x, 50%) var(--cursor-y, 50%), #0e167288, transparent), radial-gradient(100px at var(--cursor-x, 50%) var(--cursor-y, 50%), #cc0fcf6c, transparent), #000000;
+  position: absolute;
+  inset: 0;
+  transition: opacity 300ms;
 }
 
-@layer base {
-  @font-face {
-    font-family: "circular-web";
-    src: url("/fonts/circularweb-book.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "general";
-    src: url("/fonts/general.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "robert-medium";
-    src: url("/fonts/robert-medium.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "robert-regular";
-    src: url("/fonts/robert-regular.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "zentry";
-    src: url("/fonts/zentry-regular.woff2") format("woff2");
-  }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), #0e167288, transparent), radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), #890c8b6c, transparent);
+  transition: background 0.1s;
 }
+
+
+
 
 @layer utilities {
   .border-hsla {
@@ -50,7 +61,7 @@ body {
   .floating-nav {
     @apply bg-black rounded-lg border;
   }
-
+ 
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
@@ -63,17 +74,14 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .special-font b {
-    font-family: "Zentry";
-    font-feature-settings: "ss01" on;
-  }
+
 
   .hero-heading {
-    @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+    @apply uppercase font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
   }
 
   .about-subtext {
-    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[20rem];
   }
 
   .about-image {
@@ -81,27 +89,62 @@ body {
   }
 
   .animated-title {
-    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+    @apply flex flex-col gap-1 text-4xl uppercase leading-[.4] text-white sm:px-32 md:text-[1rem];
   }
 
   .animated-word {
-    @apply special-font font-zentry font-black opacity-0;
+    @apply font-black opacity-0;
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
   }
 
-  .bento-tilt_1 {
-    @apply relative border-hsla col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out;
-  }
-
   .bento-tilt_2 {
-    @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+    @apply relative border-hsla col-span-2 overflow-hidden rounded-3xl transition-transform duration-300 ease-out;
+
+  }
+  
+
+  .bento-tilt_1 {
+    @apply relative col-span-1 overflow-hidden rounded-3xl transition-transform duration-300 ease-out;
+    position: relative;
+  }
+  .bento-tilt_1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(97, 97, 101, 0.1); /* Slightly darker transparent cover */
+    backdrop-filter: blur(15px) saturate(150%); /* Enhanced glassmorphism effect */
+    -webkit-backdrop-filter: blur(15px) saturate(150%); /* For Safari */
+    pointer-events: none;
+    z-index: 10; /* Ensure the black color effect is on the top layer */
+    transition: backdrop-filter 0.3s ease, background 0.3s ease; /* Smooth transition */
   }
 
-  .bento-title {
-    @apply uppercase md:text-6xl text-4xl font-black font-zentry;
+  .bento-tilt_1:hover::before {
+    backdrop-filter: blur(20px) saturate(200%); /* More intense effect on hover */
+    -webkit-backdrop-filter: blur(20px) saturate(200%); /* For Safari */
+    background: rgba(97, 97, 101, 0.2); /* Darker background on hover */
   }
+  .bento-title {
+    @apply uppercase md:text-6xl text-4xl font-black;
+    position: relative;
+  }
+  .bento-tilte::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black transparent cover */
+    pointer-events: none;
+    z-index: 10; /* Ensure the black color effect is on the top layer */
+  }
+
 
   .story-img-container {
     @apply relative md:h-dvh h-[90vh] w-full;

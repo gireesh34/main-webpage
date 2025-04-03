@@ -25,6 +25,7 @@ export default {
           100: "#8e983f",
           300: "#edff66",
         },
+        accent: '#8ef609',
       },
     },
   },

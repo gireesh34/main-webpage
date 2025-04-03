@@ -57,19 +57,21 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
-      <video
-        src={src}
-        loop
-        muted
-        autoPlay
-        className="absolute left-0 top-0 size-full object-cover object-center"
-      />
-      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
+    <div className="relative size-full overflow-hidden rounded-3xl h-80 w-full">
+      
+        <video
+          src={src}
+          loop
+          muted
+          autoPlay
+          className="absolute left-0 top-0 size-full object-cover object-center rounded-3xl"
+        />
+      
+      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50 rounded-3xl h-80 w-full">
         <div>
-          <h1 className="bento-title special-font">{title}</h1>
+          <h1 className="bento-title text-accent">{title}</h1>
           {description && (
-            <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
+            <p className="mt-3 max-w-64 text-xs md:text-base text-accent font-bold">{description}</p>
           )}
         </div>
 
@@ -79,7 +81,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
+            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white"
           >
             {/* Radial gradient hover effect */}
             <div
@@ -90,7 +92,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
               }}
             />
             <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
+            <p className="relative z-20">Open Now</p>
           </div>
         )}
       </div>
@@ -99,89 +101,95 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-  <section className="bg-black pb-52">
-    <div className="container mx-auto px-3 md:px-10">
-      <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
-        </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+  <section className="">
+    <div className="container mx-auto px-3 md:px-20 py-10 md:py-20">
+      <div className="text-center mb-24">
+        <h2 className="bento-title text-accent text-3xl md:text-6xl font-bold mb-8">
+          Crafting Digital Excellence
+        </h2>
+        <p className="mt-4 max-w-3xl mx-auto text-lg text-white">
+          We're a collective of passionate designers, developers, and creative thinkers dedicated 
+          to transforming ideas into exceptional digital experiences. With over a decade of 
+          expertise, we've helped businesses across the globe achieve their digital ambitions.
         </p>
       </div>
 
-      <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
-        <BentoCard
-          src="videos/feature-1.mp4"
-          title={
-            <>
-              radia<b>n</b>t
-            </>
-          }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
-          isComingSoon
-        />
-      </BentoTilt>
-
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+      <div className="grid h-auto w-full grid-cols-1 md:grid-cols-2 gap-7">
+        <BentoTilt className="bento-tilt_1 relative h-80 w-full overflow-hidden rounded-3xl">
           <BentoCard
-            src="videos/feature-2.mp4"
             title={
               <>
-                zig<b>m</b>a
+                VR Training Solution<b></b>
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            description="AR/VR - Immersive VR training platform for industrial applications."
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+        <BentoTilt className="bento-tilt_1 relative h-80 w-full overflow-hidden rounded-3xl">
+          <a
+            href="https://catalog.perceive.space/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="size-full"
+          >
+            <BentoCard
+              title={
+                <>
+                  3D Catalog<b></b>
+                </>
+              }
+              description="A 3D catalog of Web3 products, allowing you to explore and interact with them in a virtual space."
+              isComingSoon
+            />
+          </a>
+        </BentoTilt>
+
+        <BentoTilt className="bento-tilt_1 relative h-80 w-full overflow-hidden rounded-3xl">
           <BentoCard
-            src="videos/feature-3.mp4"
             title={
               <>
-                n<b>e</b>xus
+                E-commerce Platform<b></b>
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            description="UI/UX - A modern e-commerce platform with an intuitive shopping experience"
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_1 relative h-80 w-full overflow-hidden rounded-3xl">
           <BentoCard
-            src="videos/feature-4.mp4"
             title={
               <>
-                az<b>u</b>l
+                AR Shopping Experience<b></b>
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            description="AR/VR - Revolutionary AR app for virtual try-ons and product visualization in 3D."
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
-            </h1>
-
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
+        <BentoTilt className="bento-tilt_1 relative h-80 w-full overflow-hidden rounded-3xl">
+          <BentoCard
+            title={
+              <>
+                Finance Dashboard<b></b>
+              </>
+            }
+            description="Comprehensive financial management platform for modern businesses."
+            isComingSoon
+          />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
+        <BentoTilt className="relative h-80 w-full overflow-hidden rounded-3xl">
           <video
-            src="videos/feature-5.mp4"
+            src="https://videos.pexels.com/video-files/28320042/12359943_1920_1080_24fps.mp4"
             loop
             muted
             autoPlay
-            className="size-full object-cover object-center"
+            playsInline
+            className="w-full h-full object-cover object-center"
           />
         </BentoTilt>
       </div>
